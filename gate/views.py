@@ -150,10 +150,29 @@ def gate_pass(request):
     
 
 def sservices(request):
-	    
+	print("*************************")  
 	return render(request,'student/sservices.html')
     
-
+def complaint1(request):
+	global global_studentid
+	global global_name
+	#get data from form and fill in database
+	if request.method=='POST':
+		stud=complaints()
+		stud.uid=global_studentid
+		stud.name=global_name
+		stud.block="BH2"
+		stud.room_no="518"
+		stud.entry_created_by=global_studentid
+		stud.last_modified_by=global_studentid
+		stud.complaint=request.POST['complaint']
+		stud.save()
+	#get data from table and show in html page	
+	gp=complaints.objects.all().filter(uid__exact=global_studentid)
+	print(gp)
+	context={"complaintss":gp}
+	return render(request,'student/complaint.html',context)
+	
 def complaint(request):
 	global global_studentid
 	#get data from table and show in html page
@@ -254,7 +273,7 @@ def hkstatus(request):
 		t.status = b  # change field
 		t.save() # this will update only
 		
-	return render(request,'faculty/facultyhome.html')
+	return render(request,'manager/facultybuilding.html')
 
 def cooking1(request):
 	global global_id
@@ -286,7 +305,10 @@ def getgatepass(request):
 		stud=gatepass()
 		stud.uid=global_studentid
 		stud.name=global_name
+		stud.from_date=request.POST['from_date']
+		stud.to_date=request.POST['to_date']
 		stud.purpose=request.POST['purpose']
+		stud.to_palce=request.POST['to_place']
 		stud.entry_created_by=global_studentid
 		stud.last_modified_by=global_studentid
 		print(stud)
@@ -298,26 +320,7 @@ def getgatepass(request):
 		
 	return render(request,'student/gatepass.html',context)
 		
-def complaint1(request):
-	global global_studentid
-	global global_block
-	#get data from form and fill in database
-	if request.method=='POST':
-		stud=complaints()
-		stud.uid=global_studentid
-		stud.block="BH2"
-		stud.room_no="518"
-		stud.entry_created_by=global_studentid
-		stud.last_modified_by=global_studentid
-		stud.complaint=request.POST['complaint']
-		
-		stud.save()
-	#get data from table and show in html page	
-	gp=complaints.objects.all().filter(uid__exact=global_studentid)
-	print(gp)
-	context={"complaintss":gp}
-	return render(request,'student/complaint.html',context)
-	
+
 def bh1(request):
 	gpl=laundry_details.objects.all().filter(block__exact="BH1").filter(status=0)
 	ll=gpl.count()

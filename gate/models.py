@@ -223,6 +223,5 @@ class worker_tracker(models.Model):
 	entry_created_by=models.CharField(max_length=30,default=None,null=True)
 	entry_last_modified_time=models.DateTimeField(default=datetime.now())
 	entry_last_modified_by=models.CharField(max_length=30,default=None,null=True)
-	
 
       

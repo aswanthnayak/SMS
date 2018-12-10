@@ -96,22 +96,20 @@ function googleTranslateElementInit() {
         <div class="modal-body">
           <form method="post" action="{% url 'getgatepass' %}">
            {% csrf_token %}
-    <!--        <div class="form-group">
-              <label for="from_date">From Date</label>
-              <input type="text" name="from" class="form-control">
-            </div> -->
+      
             <div class="form-group">
-                    <label for="from_date" >From Date</label>
-                   <input type="date" name="from_date" value="from_date" min="1979-12-31">
+                    <label for="from_date">From Date</label>
+                   <input type="date" name="from_date" value="from_date">
                   </div>
-      <!--      <div class="form-group">
-              <label for="to_date">To Date</label>
-              <input type="text" name="to" class="form-control">
-              <small class="form-text text-muted">Mention time and data</small>
-            </div>  -->
+       
+            
             <div class="form-group">
                     <label for="to_date">To Date</label>
-                   <input type="date" name="to_date" value="to_date" min="1979-12-31">
+                   <input type="date" name="to_date" value="to_date">
+                  </div>
+       <div class="form-group">
+                    <label for="to_palce">To Place</label>
+                   <input type="text" name="to_place" value="to_place">
                   </div>
             <div class="form-group">
               <label for="purpose">Purpose</label>

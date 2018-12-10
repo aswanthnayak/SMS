@@ -259,16 +259,18 @@
 				  <td>{{i.id}}</td>
 				  <td>{{i.date}} </td>
 				  <td>{{i.tm}} </td>
-				   {% endfor %}
+				 
 				  <form method="post" action="{% url 'hkstatus' %}">
 				  {% csrf_token %}
-				  <td><input type="text" name="uid" value="2016151" readonly></td>
+				  <td><input type="text" name="uid" value={{i.uid}} readonly></td>
 				  
-				   <td><input type="text" for="assigned_worker_id" name="wid" ></td><td><input type="number" for="status" name="status" value="0" min=0 max=1>
-				   <input type="submit" value="Submit" class="btn btn-primary btn-block" ></td> </form>
+				   <td><input type="text" for="assigned_worker_id" name="wid" value=""></td><td><input type="number" for="status" name="status" value="0" min=0 max=1>
+				   <input type="submit" value="Submit" class="btn btn-primary btn-block" ></td> 
+				   
+				   </form>
 
 				  </tr>
-				  			      
+				   {% endfor %} 			      
                                       
                                 </tbody>
                               </table>
