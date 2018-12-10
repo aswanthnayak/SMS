@@ -23,10 +23,10 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav">
           <li class="nav-item px-2">
-            <a href="faculty_home.html" class="nav-link active">Home</a>
+            <a href="facultyhome.html" class="nav-link active">Home</a>
           </li>
           <li class="nav-item px-2">
-            <a href="faculty_services_history.html" class="nav-link">My Services History</a>
+            <a href="faculty_serviceshistory.html" class="nav-link">My Services History</a>
          
           <li class="nav-item px-2">
             <a href="faculty_complaints.html" class="nav-link">Complaints</a>
@@ -74,25 +74,25 @@
       <div class="row">
         <div class="col-3">
             
-          <a href=""><img src="home.png"style="width:60%;height:70%"></a>
+          <a href=""><img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Home_font_awesome.svg"style="width:60%;height:70%"></a>
           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addhomeModal">
               <i class="fas fa-"></i>House keeping
             </a>
          </div>
         <div class="col-3">
-          <a href=""> <img src="food.png" style="width:60%;height:70%"></a>
+          <a href=""> <img src="https://library.kissclipart.com/20180905/ksq/kissclipart-cooking-icon-png-clipart-cooking-restaurant-food-a79578bcc03e22dd.jpg" style="width:60%;height:70%"></a>
           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addcookModal">
               <i class="fas fa-"></i>Cooking
             </a>
         </div>
         <div class="col-3">
-          <a href=""> <img src="cab.png" style="width:60%;height:70% "></a>   
+          <a href=""> <img src="https://taxiairport.ca/wp-content/uploads/2018/03/LIMO-ICON.png" style="width:60%;height:70% "></a>   
           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addcabModal">
               <i class="fas fa-"></i>Book cab
             </a>
          </div>
         <div class="col-3">
-          <a href=""> <img src="Notify gate.png" style="width:60%;height:70%"></a>
+          <a href=""> <img src="https://maxcdn.icons8.com/Share/icon/Household/front_gate_open_filled1600.png" style="width:60%;height:70%"></a>
           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#adddoorModal">
               <i class="fas fa-"></i>Notify gate
             </a>
@@ -101,27 +101,27 @@
       <br><br>
       <div class="row">
         <div class="col-3">
-          <a href=""> <img src="laundry.png" style="width:60%;height:70%"></a>
+          <a href=""> <img src="https://png2.kisspng.com/sh/7351f6bc8b17b4857ab877da51fd3e62/L0KzQYm3UsI1N5J6j5H0aYP2gLBuTfNtbZJzgdDwLXPvecG0ggJ1NZRxfdN3aX7qPcjokBhqdpgyhdNsaHnxdX68gckybmJqfNM9M3HoQnA6V8Y1OGI5SKMAMUm4QYW3WcM3P2M8RuJ3Zx==/kisspng-cleaning-clip-art-cleaning-washing-machine-5a91f1eda43ae2.3764014015195140936727.png" style="width:60%;height:70%"></a>
           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addclothesModal">
               <i class="fas fa-"></i>Laundry
             </a>
         </div>
         <div class="col-3">
-          <a href=""> <img src="groceries.png" style="width:60%;height:70%"></a>
+          <a href=""> <img src="https://image.flaticon.com/icons/svg/135/135301.svg" style="width:60%;height:70%"></a>
           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addshoppingModal">
               <i class="fas fa-"></i>groceries
             </a>
         </div>
-        <div class="col-3">
+       <!-- <div class="col-3">
             <a href=""> <img src="function hall.png" style="width:60%;height:70%"></a>
             <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addhallModal">
                 <i class="fas fa-"></i>Book hall
               </a>
-           </div>
+           </div>-->
         <div class="col-3">
-          <a href=""> <img src="ambulance.png" style="width:60%;height:70%"></a>
+          <a href=""> <img src="https://image.flaticon.com/icons/svg/45/45642.svg" style="width:60%;height:70%"></a>
           <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addambulanceModal">
-              <i class="fas fa-"></i>Ambulance
+              <i class="fas fa-"></i>First Aid
             </a>
               </div>
             
@@ -141,21 +141,21 @@
               </div>
               <div class="modal-body">
                 
-                 <form>
+                 <form method="post" action="{% url 'housekeeping' %}">
+                  {% csrf_token %}
                       <div class="form-group">
-                         <label for="title">Date</label>
-                         <input type="date" id="myDate" value="2018-11-03">
+                         <label for="date">Date</label>
+                         <input type="date" name="Date" value="">
                       </div>
                
                       <div class="form-group">
-                         <label for="title">Time</label>
-                         <input type="time" id="myTime" value="11:15:00">
+                         <label for="tm">Time</label>
+                         <input type="time" name="Time" value="">
                       </div>
+                     <input type="submit" value="Submit" class="btn btn-primary btn-block" >
                  </form>
               </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary" data-dismiss="modal">Submit</button>
-              </div>
+             
             </div>
           </div>
         </div>
@@ -171,22 +171,22 @@
         </div>
         <div class="modal-body">
           
-          <form>
+          <form method="post" action="{% url 'cooking1' %}">
+                  {% csrf_token %}
                       <div class="form-group">
-                         <label for="title">Date</label>
-                         <input type="date" id="myDate" value="2018-11-03">
+                         <label for="date">Date</label>
+                         <input type="date" name="Date" value="">
                       </div>
                
                       <div class="form-group">
-                         <label for="title">Time</label>
-                         <input type="time" id="myTime" value="11:15:00">
+                         <label for="tm">Time</label>
+                         <input type="time" name="Time" value="">
                       </div>
-         </form>
+                                  <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+                 </form>
          
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-dismiss="modal">Submit</button>
-        </div>
+       
       </div>
     </div>
   </div>
@@ -202,43 +202,55 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form method="post" action="{% url 'bookcab1' %}">
+          {% csrf_token %}
             <div class="form-group">
-              <label for="title">FROM</label>
-              <select>
-					  <option value="volvo">CSA</option>
-					  <option value="saab">IIITS Campus</option>
-					  <option value="opel">GH-1</option>
-					  <option value="audi">BH-2</option>
-            </select>
+            Pick up point<br>
+              <input list="browsers" for="from_palce" name="from_palce" > 
+	<datalist id="browsers">
+	<option value="IIIT Campus">
+	<option value="Boys Hostel">
+	<option value="Girls Hostel">
+	<option value="Tada">
+	<option value="Sullurpeta">
+	<option value="Chennai">
+	</datalist>
+	<div class="form-group">
+              <input type="date" name="date" value="Date">
+              <input type="time" name="time">
+            </div>
 
             </div>
             
             <div class="form-group">
-              <label for="image">TO</label>
-              <select>
-				  <option value="volvo">IIITS Campus</option>
-				  <option value="saab">CSA</option>
-				  <option value="opel">BH-1</option>
-				  <option value="audi">GH-2</option>
-              </select>
-
+            Drop Point<br>
+            <input list="browsers" for="to_palce" name="to_palce"> 
+	<datalist id="browsers">
+	<option value="IIIT Campus">
+	<option value="Boys Hostel">
+	<option value="Girls Hostel">
+	<option value="Tada" >
+	<option value="Sullurpeta">
+	<option value="Chennai">
+	</datalist>
+             <!-- <select for="to_palce" name="to_palce">
+ 					 
+		 <option value="IIIT CAMPUS" >IIIT Campus</option>
+			 <option value="Boys Hostel" >Boys Hostel</option>
+			 <option value="Girls Hostel" >Girls Hostel</option>
+			 <option value="Tada" >Tada</option>
+			<option value="Sullurpeta" >Sullurpeta</option>
+			<option value="Chennai" >Chennai</option>
+			 </select>-->
+			 
               
             </div>
-            <div class="form-group">
-                         <label for="title">Date</label>
-                         <input type="date" id="myDate" value="2018-11-03">
-                      </div>
-               
-                      <div class="form-group">
-                         <label for="title">Time</label>
-                         <input type="time" id="myTime" value="11:15:00">
-                      </div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+            
           </form>
+        
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-dismiss="modal">Submit</button>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -255,26 +267,28 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="title">NAME OF VISITOR</label>
-                  <input type="text" class="form-control">
-                </div>
-                
-                <div class="form-group">
-                  <label for="image">MOBILE NUMBER</label>
-                  <input type="text" class="form-control">
+              <form  method="post" action="{% url 'notifygates1' %}">
+                 {% csrf_token %}
+               <div class="form-group">
+                  <label for="name_of_visitor">Name Of Visitor</label>
+                  <input type="text" name="name" class="form-control">
                 </div>
                 <div class="form-group">
-                         <label for="title">Date</label>
-                         <input type="date" id="myDate" value="2018-11-03">
-                      </div>
+                    <label for="mobile_no_of_visior">Mobile no.</label>
+                    <input type="text" name="mobno"class="form-control">
+                   
+                  </div>
+                  
+                <div class="form-group">
+                  <label for="date_of_arrival">Date</label>
+		<input type="date" name="date" value="Date">
+                  <!--small class="form-text text-mute">no of trousers should be less than 20</small-->
+                </div>
                
-                      <div class="form-group">
-                         <label for="title">Time</label>
-                         <input type="time" id="myTime" value="11:15:00">
-                      </div>
+                  <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+            
               </form>
+   
             </div>
             <div class="modal-footer">
               <button class="btn btn-primary" data-dismiss="modal">Submit</button>
@@ -294,30 +308,64 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form  method="post" action="{% url 'laundry1' %}">
+          {% csrf_token %}
+          <div>
+          	 <label for="date">DATE</label>
+          	<input type="date" name="date" value="Date">
+          	</div><div> <label for="time">TIME</label>
+              <input type="time" name="time">
+              </div>
              
+              
+                
+                
+                  
                 <div class="form-group">
-                    <label for="title">NUMBER OF SHIRTS</label>
-                    <input type="text" class="form-control">
+                  <label for="room_no">ROOM NO</label>
+                  <input type="text" name="room_no" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="no_of_shirts">NUMBER OF SHIRTS</label>
+                    <input type="number" name="shirts"class="form-control" min="1" max="20">
+                    <small class="form-text text-mute">no of shirts should be less than 20</small>
                   </div>
                   
                 <div class="form-group">
-                  <label for="image">NUMBER OF TROUSERS</label>
-                  <input type="text" class="form-control">
+                  <label for="no_of_trousers">NUMBER OF TROUSERS</label>
+                  <input type="number" name="trousers"class="form-control" min="1" max="20">
+                  <small class="form-text text-mute">no of trousers should be less than 20</small>
                 </div>
+	<div class="form-group">
+                  <label for="no_of_kurties">NUMBER OF Kurities</label>
+
+                  <input type="number" name="kurties"class="form-control" min="1" max="20">
+                  <small class="form-text text-mute">no of kuties should be less than 20</small>
+                </div>
+<div class="form-group">
+                  <label for="no_of_salvars">NUMBER OF Salvars</label>
+
+                  <input type="number" name="salvars"class="form-control" min="1" max="20">
+                  <small class="form-text text-mute">no of trousers should be less than 20</small>
+                </div>
+<div class="form-group">
+                  <label for="no_of_leggins">NUMBER OF leggins</label>
+
+                  <input type="number" name="leggins"class="form-control" min="1" max="20">
+                  <small class="form-text text-mute">no of trousers should be less than 20</small>
+                </div>
+               
                 <div class="form-group">
-                    <label for="image">NUMBER OF SAREES</label>
-                    <input type="text" class="form-control">
+                    <label for="other">OTHERS</label>
+                    <input type="text" name="other"class="form-control" min="1" max="20">
+                    
+
                   </div>
-                <div class="form-group">
-                    <label for="image">OTHERS</label>
-                    <input type="text" class="form-control">
-                  </div>
+                  <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+            
           </form>
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-dismiss="modal">Submit</button>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -333,25 +381,29 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form method="post" action="{% url 'groceries' %}">
                    
+          {% csrf_token %}
             <div class="form-group">
-              <label for="title">ITEMS</label>
-              <input type="text" class="form-control">
+              <label for="description">ITEMS</label>
+              <input type="text" class="form-control" name="items">
+              <small class="form-text text-mute">Max 5 kilograms is provided</small>
             </div>
-            
             <div class="form-group">
-              <label for="image">QUANTITY</label>
-              <input type="text" class="form-control">
-              <small class="form-text text-mute">quantity should not exceed 5 kilograms</small>
+              <label for="date">DATE</label>
+          	<input type="date" name="date" value="Date" min="2018-12-10">
+             
+   
+            </div>
+            <div class="form-group">
+              
               <small class="form-text text-mute">Service Timings : 9:00 Am - 6:00 Pm</small>
    
             </div>
+                              <input type="submit" value="Submit" class="btn btn-primary btn-block" >
           </form>
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-dismiss="modal">Submit</button>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -367,24 +419,15 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="title">BLOCK</label>
-              <input type="text" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="title">FLOOR</label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="form-group">
-                  <label for="title">ROOM NO</label>
-                  <input type="text" class="form-control">
-                </div>
+           <form  method="post" action="{% url 'medical1' %}">
+          {% csrf_token %}
+              
                 <div class="form-group">
-                    <label for="title">PHONE NUMBER</label>
-                    <input type="text" class="form-control">
-                  </div>
-          </form>
+                  <label for="description">Description</label>
+                  <textarea name="description" class="form-control"></textarea>
+                </div>
+                                  <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+              </form>
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" data-dismiss="modal">Submit</button>
