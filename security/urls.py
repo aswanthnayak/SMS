@@ -5,5 +5,6 @@ urlpatterns = [
     path('', include('gate.urls')),
     path('gate/', include('gate.urls')),
     
+    
     path('admin/', admin.site.urls),
 ]
