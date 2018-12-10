@@ -648,6 +648,7 @@ def medicalservice(request):
 	return render(request,'student/sservices.html')
      
 
+	
 def medicalservice1(request):
 	global global_id
 	#get data from form and fill in database
