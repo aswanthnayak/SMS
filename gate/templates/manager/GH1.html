@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Student</title>
+  <style>
+  body
+{
+    margin: 0;
+    padding: 0;
+    background:rgb(32, 178, 154);
+}
+.box
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%,50%);
+    
+}
+.notifications
+{
+    width: 60px;
+    height: 60px;
+    background:white;
+    border-radius: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+}
+
+.fa {
+    position: absolute !important;
+    text-align: center !important;
+    transform: translate(-50%, 25%) !important;
+}
+
+.num {
+    position: absolute;
+}
+/*.notifications:hover
+{
+    width: 300px;
+    height: 60px;
+    text-align: left;
+    padding: 0 15px;
+    background:#ff2c74;
+    transform: translateY(-100%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}*/
+.notifications  .fas
+{
+    color: #cecece;
+    line-height: 60px;
+    font-size: 30px;
+}
+/*.notifications:hover .fas
+{
+    color:#fff;
+
+}*/
+.notifications .num
+{
+    position: absolute;
+    top: 0;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background:red;
+    color:#fff;
+    line-height: 25px;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+    <div class="container">
+      <a href="BH1.html" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">Security Management System</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+               
+          <li class="nav-item px-2">
+            <a href="BH1.html" class="nav-link active">BH1</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="BH2.html" class="nav-link">BH2</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="GH1.html" class="nav-link">GH1</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="facultybuilding.html" class="nav-link">Faculty Building</a>
+          </li>
+          
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+            <a href="login.html" class="nav-link">
+              <i class="fas fa-user-times"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- HEADER -->
+<header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>
+            <i class="fas fa-user"></i> Worker Notifications</h2>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ACTIONS--> 
+  <section id="actions" class="py-4 mb-4 bg-light">
+      <div class="container">
+        <div class="row">
+          <h2  style="text-align:center;">Girls Hostel 1</h2>
+          
+        </div>
+      </div>
+    </section>
+         <div class="container">
+                <br>
+                <div class="row">
+                  <div class="col-3">
+                        <link rel="stylesheet" type="text/css" href="style.css">
+                        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+                        <div class="notifications">
+                    <i class="fa fa-home"  style="font-size:36px" aria-hidden="true"></i>
+                    <a href="#" class="btn btn-block" data-toggle="modal" data-target="#addhomeModal">
+                        <i class="fas fa-plus"></i> 
+                      </a>
+                    <span class="num">{{lenh}}</span>
+                  </div><br>House Cleaning
+                   </div>
+                  
+                  <div class="col-3">
+                      <div class="notifications">
+                    <i class="fa fa-door-open" style="font-size:36px" aria-hidden="true"></i>
+                    <a href="#" class="btn btn-block" data-toggle="modal" data-target="#adddoorModal">
+                        <i class="fas fa-plus"></i> 
+                      </a>
+                    <span class="num">{{lenm}}</span>
+                  </div><br>Medical
+                </div>
+                </div>
+                <br><br><br>
+                   <div class="row">
+                  <div class="col-3">
+                      <div class="notifications">
+                    <i class="fa fa-tshirt" style="font-size:36px" aria-hidden="true"></i>
+                    <a href="#" class="btn btn-block" data-toggle="modal" data-target="#addclothesModal">
+                        <i class="fas fa-plus"></i> 
+                      </a>
+                    <span class="num">{{lenl}}</span>
+                  </div> <br>Laundry     
+                  </div>            
+                  
+                 <div class="col-3">
+                    <div class="notifications">
+                   <i class="fa fa-comments" style="font-size:36px" aria-hidden="true"></i>
+                   <a href="#" class="btn btn-block" data-toggle="modal" data-target="#addcommentsModal">
+                      <i class="fas fa-plus"></i> 
+                    </a>
+                      <span class="num">{{lenght}}</span>
+                          </div><br>Complaints
+                 </div>
+                </div>
+              </div>       
+        </div>
+    </div><!--1 ADD HOME MODAL -->
+    <div class="modal fade" id="addhomeModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title">ROOM CLEANING</h5>
+              <button class="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                  <section id="posts">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col">
+                            <div class="card">
+                              <div class="card-header">
+                                <h4>Latest services</h4>
+                              </div>
+                              <table class="table table-striped">
+                                <thead class="thead-dark">
+                                <tr>
+                                <th>#</th>
+                                <th>UserId</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Worker Assigned</th>
+                                <th>status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               {% for i in house %}
+				<tr>
+				  <td>{{i.id}}</td>
+				  
+				  <td>{{i.uid}}</td>
+				  <td>{{i.date}} </td>
+				  <td>{{i.tm}} </td>
+				  <td><form><input type="text" for="assigned_worker_id" name="wid" ><input list="browsers" for="status" name="status" value="0"><datalist id="browsers">
+	<option value="1"></datalist><br><input type="submit" value="Submit" class="btn btn-primary btn-block" ></form> </td>
+				  </tr>
+			       {% endfor %} 
+                                      
+                                </tbody>
+                              </table>
+                  
+                              <!-- PAGINATION -->                        
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+  
+  
+             
+<!--4 ADD DOOR MODAL -->
+<div class="modal fade" id="adddoorModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Medical Service</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+              <section id="posts">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <div class="card">
+                          <div class="card-header">
+                            <h4>Latest </h4>
+                          </div>
+                          <table class="table table-striped">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th>#</th>
+                                <th>User</th>
+                                <th>Room No</th>
+                                <th>Description</th>
+                                
+                             
+                                </tr>
+                            </thead>
+                            <tbody>
+				{% for i in medicalservice %}
+				<tr>
+				  <td>{{i.id}}</td>
+				  <td>{{i.uid}}</td>
+				  <td>{{i.room_no}} </td>
+				  <td>{{i.description}} </td>
+                              <tr>
+	{% endfor %} 
+                             
+                            </tbody>
+                          </table>
+              
+                          <!-- PAGINATION -->                        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+          </form>
+        </div>
+        </div>
+    </div>
+  </div>
+ 
+  <!--3 ADD CAB MODAL -->
+  <div class="modal fade" id="addcabModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">CAB</h5>
+            <button class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <section id="posts">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col">
+                          <div class="card">
+                            <div class="card-header">
+                              <h4>Latest cab services</h4>
+                            </div>
+                            <table class="table table-striped">
+                              <thead class="thead-dark">
+                                <tr>
+                                  <th>#</th>
+                                  <th>User</th>
+                                  <th>Name</th>
+                                  <th>From</th>
+                                  <th>To</th>
+                                  <th>Date</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Student</td>
+                                  <td>Arjun</td>
+                                  <td>Academic building</td>
+                                  <td>tada</td>
+                                  <td>may 10 2018</td>
+                                  
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>Student</td>
+                                  <td>sandeep</td>
+                                  <td>Boys Hostel 1</td>
+                                  <td>Sullurupeta</td>
+                                  <td>may 12 2018</td>
+                                   </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td>Student</td>
+                                  <td>Ramaraj</td>
+                                  <td>Faculty Building</td>
+                                  <td>chennai</td>
+                                  <td>may 14 2018</td>
+                                  </tr>
+                                
+                               
+                              </tbody>
+                            </table>
+                
+                            <!-- PAGINATION -->                        
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+  
+  <!--3 ADD CLOTHES MODAL -->
+<div class="modal fade" id="addclothesModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">LAUNDRY</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <section id="posts">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4>Latest services</h4>
+                      </div>
+                      <table class="table table-striped">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th>#</th>
+                            <th>Uid</th>
+                            
+                            <th>Room No</th>
+                            <th>No of Clothes</th>
+                            <th>Date</th>
+                            <th>time</th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                            	{% for i in laundry %}
+				<tr>
+				  <td>{{i.id}}</td>
+				  
+				  <td>{{i.uid}}</td>
+				  <td>{{i.room_no}} </td>
+				  <td>{{i.no_of_shirts}}+{{i.no_of_trousers}}+{{i.other}} </td>
+				  <td>{{i.date}} </td>
+				  <td>{{i.tm}} </td>
+				  
+				  </tr>
+			       {% endfor %}   
+                        </tbody>
+                      </table>
+          
+                      <!-- PAGINATION -->                        
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+<!--4 ADD COMMENTS MODAL -->
+
+<div class="modal fade" id="addcommentsModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">COMPLAINTS</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+              <section id="posts">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <div class="card">
+                          <div class="card-header">
+                            <h4>Latest Complaints</h4>
+                          </div>
+                          <table class="table table-striped">
+                            <thead class="thead-dark">
+                             <tr>
+                                <th>#</th>
+                                
+                                <th>Uid</th>
+                                <th>Complaint</th>
+                                <th>Status</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                            	{% for i in complaintss %}
+				<tr>
+				  <td>{{i.id}}</td>
+				  
+				  <td>{{i.uid}}</td>
+				  <td>{{i.complaint}} </td>
+				  <td><form><input list="browsers" for="status" name="status" value="0"><datalist id="browsers">
+	<option value="1"></datalist><br><input type="submit" value="Submit" class="btn btn-primary btn-block" ></form> </td>
+				  </tr>
+			       {% endfor %}   
+                            </tbody>
+                          </table>
+              
+                          <!-- PAGINATION -->                        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+</body>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+crossorigin="anonymous"></script>
+<script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+</html>

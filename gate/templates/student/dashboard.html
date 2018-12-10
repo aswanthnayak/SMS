@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Security and Management</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+    <div class="container">
+      <a href="studenthome.html" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">SMS</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item px-2">
+            <a href="/gate/studenthome.html" class="nav-link active">Dashboard</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="/gate/gatepass.html" class="nav-link">GatePass</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="/gate/sservices.html" class="nav-link">My Services</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="/gate/complaint.html" class="nav-link">Complaints</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/gate/profile.html" class="nav-link">
+                <i class="fas fa-user-circle"></i> Profile
+             </a>
+           </li>
+          <li class="nav-item">
+            <a href="/gate/login.html" class="nav-link">
+              <i class="fas fa-user-times"></i> Logout
+            </a>
+          </li>
+        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div align="right">
+ <div id="google_translate_element" ></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script></div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-cog"></i> Dashboard</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+ <!-- SEARCH -->
+  <section id="search" class="py-4 mb-4 bg-light">
+ 
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
+            <i class="fas fa-plus"></i>  GatePass
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
+            <i class="fas fa-plus"></i> Complaint
+          </a>
+        </div>
+       <!-- <div class="col-md-3">
+          <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
+            <i class="fas fa-plus"></i> Add User
+          </a>
+        </div>-->
+      </div>
+    </div>
+  </section>
+   <div class="container">
+      <div class="row">
+        <div class="col-md-6 ml-auto">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search by Service...">
+            <div class="input-group-append">
+              <button class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- POSTS -->
+  <section id="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h4>Latest Services</h4>
+            </div>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  
+                  <th>Date</th>
+                  
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Room Cleaning</td>
+                  
+                  <td>May 10 2018</td>
+                  
+                  <td>
+                    <a href="/gate/details.html" class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Pending
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Cloths Washing</td>
+                  
+                  <td>May 11 2018</td>
+                 
+                  <td>
+                    <a href="/gate/details.html" class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Done
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Washroom Cleaning</td>
+                 
+                  <td>May 13 2018</td>
+                 
+                  <td>
+                    <a href="/gate/details.html" class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Done
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Room Cleaning</td>
+                  
+                  <td>May 15 2018</td>
+                 
+                  <td>
+                    <a href="/gate/details.html" class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Pending
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Notify Gate</td>
+                  
+                  <td>May 17 2018</td>
+                 
+                  <td>
+                    <a href="/gate/details.html" class="btn btn-secondary">
+                      <i class="fas fa-angle-double-right"></i> Done
+                    </a>
+                  </td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center bg-primary text-white mb-3">
+            <div class="card-body">
+              <h3>Services Pending</h3>
+              <h4 class="display-4">
+                <i class="fas fa-pencil-alt"></i> 2
+              </h4>
+              <a href="/gate/sservices.html" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+          </div>
+
+          <div class="card text-center bg-success text-white mb-3">
+            <div class="card-body">
+              <h3>Notifications </h3>
+              <h4 class="display-4">
+                <i class="fas fa-folder"></i> 4
+              </h4>
+              <a href="/gate/complaint.html" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- MODALS -->
+
+  <!-- ADD POST MODAL -->
+  <div class="modal fade" id="addPostModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">GatePass</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="{% url 'getgatepass' %}">
+           {% csrf_token %}
+            <div class="form-group">
+              <label for="from_date">From</label>
+              <input type="text" class="form-control">
+            </div>
+            
+            <div class="form-group">
+              <label for="to_date">To</label>
+              <input type="text" class="form-control">
+              <small class="form-text text-muted">Mention time and data</small>
+            </div>
+            <div class="form-group">
+              <label for="purpose">Purpose</label>
+              <textarea name="purpose" class="form-control"></textarea>
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD CATEGORY MODAL -->
+  <div class="modal fade" id="addCategoryModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Complaint</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="{% url 'complaint1'%}">
+          {% csrf_token %}
+            <div class="form-group">
+              <label for="body"></label>
+              <textarea name="complaint" class="form-control"></textarea>
+            </div>
+             <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+ <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+
+    CKEDITOR.replace('editor1');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Security and Management</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+    <div class="container">
+      <a href="studenthome.html" class="navbar-brand"> <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/49/IIIT_Sri_City_Logo.png/220px-IIIT_Sri_City_Logo.png" style="width: 32px; height: 32px; margin-right: 8px;">SMS</a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <li class="nav-item px-2">
+            <a href="studenthome.html" class="nav-link active">Dashboard</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="gatepass.html" class="nav-link">GatePass</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="sservices.html" class="nav-link">My Services</a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="complaint.html" class="nav-link">Complaints</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user-circle"></i> Profile
+             </a>
+           </li>
+          <li class="nav-item">
+            <a href="login.html" class="nav-link">
+              <i class="fas fa-user-times"></i> Logout
+            </a>
+          </li>
+        </ul>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div align="right">
+ <div id="google_translate_element" ></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script></div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header id="main-header" class="py-2 bg-success text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>
+            <i class="fas fa-folder"></i> My Services</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+   <!-- ACTIONS--> 
+  <section id="actions" class="py-4 mb-4 bg-light">
+    <div class="container">
+      <div class="row">
+        <h2  style="text-align:center;">Select Service</h2>
+        
+      </div>
+    </div>
+  </section>
+  
+    <div class="container" style="align:center">
+      <div class="row">
+        <div class="col-3">
+            
+          <a href="">    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUDSURBVFhH7ZhbTFt1HMcxGi8xxpj4ZnwxJj4YH3w0GmPU6NN80ic1vqH0QsuwBue2ZsniYL2Xm5S255RyK5fKRZi0jstgMEhhYLGUSwGZ2xxyKW6M1az9+f/9z+lJac+gIE1m0m/yTf/nnN/////0/z/fc5rmZJVVmmr6pOlRvYR9lT98uFScW/WsqYDt08kZ0MvYM5ADj/CXMiutnPlUK7Vb+UNR6STVLxO4Zct3tbHh5nYwKtmYWeHo0BTWPM2XZE5aGVOkkzGD/GGKNDL7uwYFu11f0gh/Tv0Cm8FeCA31wA/fOmMmJTOrzbO/yJdmRomAGrntY/UXzJP0ApFeynyll7PRbksLrM9cpHBx37zqhdrvG8CkdIQNUscbfJejVyKgVmaP6WXMm2q1+jGDwl6pz2diI63tAtTWwhBsX5+E8NwAPV4L9EJnRTOQuvsaCfM5HfColQhIPkEvtx8j99ulsq9rooGL3QLc30ujENlYgH82FyGyNgdb84PCtSFXG5DwxEjf85h0OvBRKRWQ3baero2tjHoEgO1r4xQs0Qh7e3FEqJn2dkNpgSNqULKeEpX1GTr4USgOSJL8IQI2aV2w6ufCEA72wd2bfgq0vhQAb60HWko74XIbOb86T86H4M6KT4BcvtID1SdJeArYkD7P9hI/xX8TDxjGLfIybtiY4SbbIvfZzmqAwm0sz0CZyglsZT80uv1gLekEZ7Eb7q2H6PW7N6Zgc5brh0lvKGmIkZW8rZEy7/DTHE5qddPjejnTblSwUV97h7ASGIbIOq4Qt524cg4C512MUHsWdqDyVDMEL48JNTu3AkJ4Nkh4fibJJ2NHtVI2l5/uYNLmVj1vVDhGK1Q10bmBCwIcFwZuZeLGbW380S8AohmzB0a7Lu2qSw7PldYOhCThYUrxycBPvb90Uvtr5D65wZ6pi/3h2zsMaLzncFtx5RCueyoMZlUd/P7rZEptcniCvRegrLAmSnap/1xe3XM8woNFlvwj8ty612pywdo09/BNDIOYMRDO4la6razZS+Fw28VqOe8Oz8qYB+yn66LkFblsUFhf4VFSRQMhZaKY1k2RMOxlDERweIxu64rIyok5MTy4kjgveVpskkfZBzwSJ5Pc9ATZ1loCuE2KjBQQ4ZLCkAnHwxPs4wAJRwl5Y90n7Xwej7xjJezbBG5eK3e8rpXY3sLCyNosGWB3GDJlDN3ShI8CIg/+giLt67oC11MUMFFxQLGBMunlyasC4J46KKCP3HOu825RN+vcsDg+Idov2RkDNOaz0Ka0gee4NcV1Cju4NG7RfsnOGCDWBlQWWC+qSnFfoRUailtE+yU7C/i/Alwt4o4zCjjS3p+WxQDN5Nz8NxYKaDlRL9ov2T2OnoMBujSYwP0tBmgg52Z4wLLj6Y3lPMuNxWM8WHHASMiQlsUAf1NVw1/kEwHrz1pF+yV76ZL54IBd5VUw3lZO2wPOSmpsT3aU02vYFgOMOxHQetIGt3wm2m4sroZQXyltx+c4FGDDuWoYqOGgfiq3UGN7uLGSXsN2uoD4lwhCYNtywgb+Lu6Lx+c4FCB+y9UJ7ltfGzZTYxvPxVcgXUAEuhM00nbQUwZhPzdufI59AXVfsi/oZbb3ye9BJRZix3SMtYPktTZNIJPdUWAF9pRNtF+yx5or6FjIoJUw76X8r6OT2auw4GEw/oOhk9k+49GyyiqrvZWT8y/ewayryGQdSwAAAABJRU5ErkJggg==" style="width:60%;height:70%"></a>
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addhomeModal">
+              <i class="fas fa-plus"></i>House keeping
+            </a>
+         </div>
+        
+         <div class="col-3">
+          <a href="">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="data:image/png;base64,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" style="width:60%;height:70%"></a>
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#adddoorModal">
+              <i class="fas fa-plus"></i>Book Cab
+            </a>
+        </div>
+            <div class="col-3">
+          <a href="">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://png.pngtree.com/element_origin_min_pic/16/08/28/2057c2da85ca742.jpg" alt="Iron gate  png clipart from pngtree.com"  style="width:60%;height:70%"></a>
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addGateModal">
+              <i class="fas fa-plus"></i>Notify Gate
+            </a>
+              </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-3">
+          <a href="">    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAZqSURBVFhH7Zf7U5JpFMf7D/Yv2J/2v9jZ/2ZndmZ3sntZuZdq8gWLi0pqSCIgQopaiQKtFzA1UPGS5jXLu6KmII6p3b77nCMQr1IZOO7szD4z33nP+/A853ze81w58Z8rypyqn1XnKnzqC7ag+oL9mGQLUkyKHcNIXVS/Gr9XnzR9LNF3wGANHqsoJsUmhhjOwaL6rewn9cly1MwCjpkPsPWs8rNmDqie3IW9b53toxL5rvSHYG1fQIUQxSaGGM7BkgAUnUvL/Nyh1Bjg98K/HvC7uXlKFiQTlRkpa+UyHR7QuA/wWuaAJvck1FnlKMhx8HuJsgE+qw27c3WsbwLcG+LX8iHuDyeCpaPql2/FcC7C1r83VdIGrJr5yI6MjkGW2TXBDpPrMlHcX4nKhfu3KuB32FmHBpSCO7hteQaV5N5Tvg+3+nbldZko5k/lnkV+XiPyFY3QSg2HB8zt2flXdOSAioY53Cr2QytWuPaiHZpTZuRnV0FzswFKYy8ULSsp+31ORwYouRagueGEVgDZC9zodPXimX8UI70v0Nv2HC2Opyi9ViNWrEkMpxdSWziln/06EkBlxRBnymn2ITS/guhGFC+GptDrG0JHQxBB7xCmx+ewubmJ0b5JlOVSdm1QNM6n9JesjAHzjH3QnrNiKDCOjcgGOhp7UZIjhvS0GcW/O6DPrUeReJIPg8hgf8cwIuEInMZW0cYChevLkBkBKh5OceYoK6GFFVhVThRessFeMwjPyCaaXu0m5HoWhtXSDe0ZCx4ZWhARH1Nf1sqZlJ5EUvonpQ/Y9Qbaqw601fcgvBaG8WYd7iqccA1tyMD2yxkIQXflPh7da+VMGq7X4HZh20H/MaUNqKwcRtHVKoTXI3Bb23kYPcPRBIh3ekcGlixnV4gzOdA5guGeCWiyzJB8awdikNIG1Cjc8NYFeOI3Vz+F7rId7udRtEztYim8xfWhyBb8i+/hm317ALLC3CXmpAOb0U0UizmbZxo4EIOUHmBgC2ox916NzjAIrdpysTItJj+C89tcF9dk+B0G14DA0nsZIM1J8js9MQdP5RNo8jzyGDGlBSi1rHJHmntxkMDfAzzMnbM7iMbq6Dm6/oEBSfszeedqNYJiK/I/7kfBH3WyGHGlBagQm7L2bEUCjkQbMm3SFHh09R0WIjsie+8TcKTOBXkW9VI975OD/jFezckx4koPsGmFO9IqjAPSaaHLtnNgGs5kMNLzdaB99p0MsPjPWnQ1DeDlyAwKrj+UxYgrLUCpM8od56eWEoAOnRvGO14O3Dr9FgOvP8GNr7/n4e5b3E7AeUY3eTMff/aK+98d3JbFiCstQJLm2kOeO+S8v32Yh9fZvZwAIEjKZE/oA7oX32FqdQsdM5+2nqoHIuMXrXz69AYmxEdvHIhBShsw714QZdIj3iZqijy4m+tE0+Tn975keYY3xLZ0H0+cPViYCYl90PTZIy9tQKl9A9rzVr6xLM0tQ3epEiZDJ5pefhmShrZUXEjLpYe8yb8Ym4OmwIfcbrn/uNIGJOWZ+vnspSxMDE7hTraNg9d3fRrqZNW1TKNILIyyG7VYml/GytJrOCffpPQdV0aA9NUqVQvf8wiSMlml8/C/NLrFmPTtsFi6YCxpQ1FONV8s3NYnWH8dRnfLIL9Lj0OpfceUGSBJnCoqdTMKL1TyVhONRnl1ex8EUFvyGPZ8F99aaEEtzoawvLjKVy31KRPyrEOpfSYpc0CSyCSdpRpxLzTcqOPJ/2psloeQrlWU2eHgCzSKC22+aKMVp4bCOZva1z4dDWBMtHBoddMWRH2SRcOpUXqgtI+KD/ryvEsW9T0yQJnEZi41L/OxKHnFVUpMhZTtvqJvA+zehtI2wk96V94fg/R0c8+unURu7GasqJ/hCwXZklsACrEt6ug3sqkt96F64YN8cf2+GIcG1HlXUV47xh3oaW6c4tV6r2KA7XzxF7PUEGC7UMyxEm0r23ckF4vsEl0b/0Y2taU+ZJMP8kV2cgyKeWjAtSt6LGXrUZxl5OfaZT1KTxnx8lIp29bTRgxdNLD94EwZnl7Ys5vO3mOR3XXewL+RTW2pD9nkg3yRLYshYn4dMMv4IzVaEZ3JwXGKYjKgYIjhHCzKX/TfqU9bdvRnzB8tZ03HKopJsYkhhpO63Moy/aA6WX5ZSHnMukyxYxj/lyMqJ078A421/Ysx35U/AAAAAElFTkSuQmCC" style="width:60%;height:70%"></a>
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addclothesModal">
+              <i class="fas fa-plus"></i>Laundry
+            </a>
+
+        </div>
+        
+        <div class="col-3">
+          <a href="">     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://media.istockphoto.com/vectors/doctor-icon-vector-female-person-profile-avatar-with-stethoscope-and-vector-id1014809662" style="width:60%;height:70%"></a>
+          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addcabModal">
+              <i class="fas fa-plus"></i>Medical Services
+            </a>
+              </div>
+             
+            
+      </div>
+    </div>
+  </div>
+  </div>   
+  <!--1 ADD HOME MODAL -->
+      <div class="modal fade" id="addhomeModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">HOUSE KEEPING</h5>
+                <button class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form method="post" action="{% url 'stuhouse'%}">
+                 {% csrf_token %}
+                  <div class="form-group">
+                    <label for="date">Date</label>
+                   <input type="date" name="date" value="Date">
+                  </div>
+                  <div class="form-group">
+                    <label for="tm">Time</label>
+                   <input type="time" name="time" value="time">
+                  </div>
+                 
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+                  <!--<div class="form-group">
+                    <label for="image">ROOM NO</label>
+                    <input type="text" class="form-control">
+                    small class="form-text text-muted">Mention time and data</small
+                  </div>
+                  -->
+                </form>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+   
+        
+      
+<!--4 ADD DOOR MODAL -->
+    <div class="modal fade" id="adddoorModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Book Cab</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="{% url 'bookcab' %}">
+          {% csrf_token %}
+            <div class="form-group">
+            Pick up point<br>
+              <input list="browsers" for="from_palce" name="from_palce" > 
+	<datalist id="browsers">
+	<option value="IIIT Campus">
+	<option value="Boys Hostel">
+	<option value="Girls Hostel">
+	<option value="Tada">
+	<option value="Sullurpeta">
+	<option value="Chennai">
+	</datalist>
+	<div class="form-group">
+              <input type="date" name="date" value="Date">
+              <input type="time" name="time">
+            </div>
+
+            </div>
+            
+            <div class="form-group">
+            Drop Point<br>
+            <input list="browsers" for="to_palce" name="to_palce"> 
+	<datalist id="browsers">
+	<option value="IIIT Campus">
+	<option value="Boys Hostel">
+	<option value="Girls Hostel">
+	<option value="Tada" >
+	<option value="Sullurpeta">
+	<option value="Chennai">
+	</datalist>
+             <!-- <select for="to_palce" name="to_palce">
+ 					 
+		 <option value="IIIT CAMPUS" >IIIT Campus</option>
+			 <option value="Boys Hostel" >Boys Hostel</option>
+			 <option value="Girls Hostel" >Girls Hostel</option>
+			 <option value="Tada" >Tada</option>
+			<option value="Sullurpeta" >Sullurpeta</option>
+			<option value="Chennai" >Chennai</option>
+			 </select>-->
+			 <div class="form-group">
+              <input type="date" name="date1" value="Date">
+              <input type="time" name="time1">
+            </div>
+              
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+            
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+    
+<!--5 ADD CLOTHES MODAL -->
+<div class="modal fade" id="addclothesModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">LAUNDRY</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  method="post" action="{% url 'laundry' %}">
+          {% csrf_token %}
+          <div>
+          	 <label for="date">DATE</label>
+          	<input type="date" name="date" value="Date">
+          	</div><div> <label for="time">TIME</label>
+              <input type="time" name="time">
+              </div>
+             
+              
+                <div class="form-group">BLOCK
+                <input list="brow" for="block" name="block"> 
+	<datalist id="brow">
+	
+	<option value="BH1">
+	<option value="BH2">
+	<option value="GH1">
+	<option value="FB">
+
+	</datalist>
+             
+
+              
+            </div>
+                
+                  
+                <div class="form-group">
+                  <label for="room_no">ROOM NO</label>
+                  <input type="text" name="room_no" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="no_of_shirts">NUMBER OF SHIRTS</label>
+                    <input type="number" name="shirts"class="form-control" min="1" max="50">
+                    <small class="form-text text-mute">no of shirts should be less than 50</small>
+                  </div>
+                  
+                <div class="form-group">
+                  <label for="no_of_trousers">NUMBER OF TROUSERS</label>
+                  <input type="number" name="trousers"class="form-control" min="1" max="50">
+                  <small class="form-text text-mute">no of trousers should be less than 50</small>
+                </div>
+               
+                <div class="form-group">
+                    <label for="other">OTHERS</label>
+                    <input type="text" name="other"class="form-control" min="1" max="50">
+                    
+
+                  </div>
+                  <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+            
+          </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+<!--3 ADD CAB MODAL -->
+<div class="modal fade" id="addcabModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title">Medical</h5>
+              <button class="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <form  method="post" action="{% url 'medical' %}">
+          {% csrf_token %}
+              
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <textarea name="description" class="form-control"></textarea>
+                </div>
+                                  <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+              </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    
+<!--3 ADD NotifyGate MODAL -->
+<div class="modal fade" id="addGateModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title">Notify Gate</h5>
+              <button class="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form  method="post" action="{% url 'notifygates' %}">
+                 {% csrf_token %}
+               <div class="form-group">
+                  <label for="name_of_visitor">Name Of Visitor</label>
+                  <input type="text" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="mobile_no_of_visior">Mobile no.</label>
+                    <input type="text" name="mobno"class="form-control">
+                   
+                  </div>
+                  
+                <div class="form-group">
+                  <label for="date_of_arrival">Date</label>
+		<input type="date" name="date" value="Date">
+                  <!--small class="form-text text-mute">no of trousers should be less than 20</small-->
+                </div>
+               
+                  <input type="submit" value="Submit" class="btn btn-primary btn-block" >
+            
+              </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+          
+
+
+
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    background:rgb(32, 178, 154);
+}
+.box
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%,50%);
+    
+}
+.notifications
+{
+    width: 60px;
+    height: 60px;
+    background:white;
+    border-radius: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+}
+
+.fa {
+    position: absolute !important;
+    text-align: center !important;
+    transform: translate(-50%, 25%) !important;
+}
+
+.num {
+    position: absolute;
+}
+/*.notifications:hover
+{
+    width: 300px;
+    height: 60px;
+    text-align: left;
+    padding: 0 15px;
+    background:#ff2c74;
+    transform: translateY(-100%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}*/
+.notifications  .fas
+{
+    color: #cecece;
+    line-height: 60px;
+    font-size: 30px;
+}
+/*.notifications:hover .fas
+{
+    color:#fff;
+
+}*/
+.notifications .num
+{
+    position: absolute;
+    top: 0;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background:red;
+    color:#fff;
+    line-height: 25px;
+    font-family: sans-serif;
+    text-align: center;
+}
+/*.notifications:hover .num
+{
+    position: relative;
+    background:transparent;
+    color:#ff2c74;
+    font-size: 24px;
+    top: -4px;
+    
+}
+.notifications:hover .num:after
+{
+    content:'Notification'
+
+}
+ul
+{
+    position: absolute;
+    left: 0;
+    top:60px;
+    margin: 0;
+    width:100%;
+    background: #ff2c74;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    padding: 20px;
+    box-sizing: border-box;
+} 
+    /*display none*/
+/*ul li
+{
+    list-style: none;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    padding: 8px 0;
+    display: flex;
+
+}
+ul li:last-child
+{
+    border-bottom: none;
+}
+ul li .icon 
+{
+    width: 24px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 15px;
+}
+ul li .icon .fas
+{
+    color: aqua;
+    font-size: 16px;
+    line-height: 24px; 
+}
+ul li .text
+{
+    position: relative;
+    font-family: sans-serif;
+    top: 3px;
+    cursor:pointer;
+}
+ul li:hover .text
+{
+    font-weight: bold;
+    color:#ff2c74;
+}*/
