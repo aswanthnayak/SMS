@@ -21,6 +21,7 @@ class student_attendance(models.Model):
 	uid=models.CharField(max_length=15,default=None)
 	block=models.CharField(max_length=5,default=None)
 	name= models.CharField(max_length=30,default=None)
+	date= models.CharField(max_length=30,default=None)
 	room_no  = models.CharField(max_length=5,default=None,null=True)
 	presence = models.IntegerField(default=0)
 	entry_created_time=models.DateTimeField(default=datetime.now())
