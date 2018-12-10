@@ -13,12 +13,15 @@ import requests,json
 global_name=None
 global_studentid=None
 global_ug=None
+global_block=None
 global_email=None
 global_mobileno=None
+global_id=None
+
 #To authenicate Faculty,Worker login    
 
 def login1(request):
-	
+	global global_id
 	if request.method=='POST':
 		
 		try:
@@ -45,38 +48,27 @@ def login1(request):
 			else:
 				#Both UserID and Password are Correct
 				k=x.did
-				
-				log.objects.all().delete()
-				u = log()
-				u.uid = x.uid
-				u.name = x.name
-				u.email_id=x.email_id
-				u.block=x.block
-				u.room_no=x.room_no
-				u.mobile_no=x.mobile_no
-				u.save()
-				u = log.objects.all()[0].uid
-				#print( log.objects.all()[0].email_id)
+				global_id=x.uid
 				
 				if k==1:
 					#To open Faculty home page
 					template = loader.get_template('faculty/facultyhome.html')
 					context = {
-						'current' : u 
+						'current' : x
 					}
 					return HttpResponse(template.render(context,request))
 				elif k==2:
 					#To open Manger home page
 					template = loader.get_template('manager/BH1.html')
 					context = {
-						'current' : u 
+						'current' : x 
 					}
 					return HttpResponse(template.render(context,request))
 				elif k==3:
 					#To open Security home page
 					template = loader.get_template('sworker/attendance.html')
 					context = {
-						'current' : u 
+						'current' : x 
 					}
 					return HttpResponse(template.render(context,request))
 		#Email is sent when you click forgot password			
@@ -166,6 +158,7 @@ def complaint(request):
 	global global_studentid
 	#get data from table and show in html page
 	gp=complaints.objects.all().filter(uid__exact=global_studentid)
+	#queryset = StoreEvent.objects.filter(stores__user=request.user).order_by('-date')
 	print(gp)
 	context={"complaintss":gp}
 	return render(request,'student/complaint.html',context)
@@ -188,6 +181,102 @@ def details(request):
 def facultyhome(request):
 	return render(request,'faculty/facultyhome.html')
  
+def faculty_serviceshistory(request):
+	global total
+	
+	gp=faculty_service_details.objects.all().filter(uid__exact=global_id).filter(status=0)
+	gpc=cooking.objects.all().filter(uid__exact=global_id).filter(status=0)
+	gpb=book_cab_details.objects.all().filter(uid__exact=global_id).filter(status=0).filter(block__exact="FB")
+	gpl=laundry_details.objects.all().filter(uid__exact=global_id).filter(status=0)			
+	gpm=medical_sevices.objects.all().filter(uid__exact=global_id).filter(status=0)			
+	gpg=bring_groceries.objects.all().filter(uid__exact=global_id).filter(status=0)			
+	gpn=notify_gate.objects.all().filter(uid__exact=global_id).filter(status=0)						
+	
+	context={"hos":gp,"cook":gpc,"cab":gpb,"laundry":gpl,"medical":gpm,"gro":gpg,"gate":gpn}
+	return render(request,'faculty/faculty_serviceshistory.html',context)
+ 
+def faculty_complaints(request):
+	global global_id
+	#get data from form and fill in database
+	if request.method=='POST':
+		print("***********************---",global_id)
+		x = user_details.objects.all().filter(uid__exact=global_id)
+			
+		stud=complaints()
+		stud.uid=x[0].uid
+		stud.name=x[0].name
+		stud.block="FB"
+		stud.complaint=request.POST['complaint']
+		stud.room_no=x[0].room_no
+		stud.entry_created_by=x[0].uid
+		stud.last_modified_by=x[0].uid
+		
+		stud.save()
+	gp=complaints.objects.all().filter(uid__exact=global_id).filter(status=0)
+	print(gp)
+	context={"com":gp}
+	return render(request,'faculty/faculty_complaints.html',context)
+ 
+def housekeeping(request):
+	global global_id
+	#get data from form and fill in database
+	if request.method=='POST':
+
+		x = user_details.objects.all().filter(uid__exact=global_id)
+			
+		stud=faculty_service_details()
+		stud.uid=x[0].uid
+		stud.name=x[0].name
+		stud.room_no=x[0].room_no
+		stud.date=request.POST['Date']
+		stud.tm=request.POST['Time']
+		stud.entry_created_by=x[0].uid
+		stud.last_modified_by=x[0].uid
+		
+		stud.save()
+		
+		
+	return render(request,'faculty/facultyhome.html')
+		 
+
+def hkstatus(request):
+	global global_id
+	print("################################--my bad")
+	#get data from form and fill in database
+	if request.method=='POST':
+		x=request.POST['uid']
+		a=request.POST['wid']
+		b=request.POST['status']
+		print("*******************************************",a)
+		t = faculty_service_details.objects.get(uid=x)
+		print("*******************************************",t.status)
+		t.assigned_worker_id = a
+		t.status = b  # change field
+		t.save() # this will update only
+		
+	return render(request,'faculty/facultyhome.html')
+
+def cooking1(request):
+	global global_id
+	#get data from form and fill in database
+	if request.method=='POST':
+
+		x = user_details.objects.all().filter(uid__exact=global_id)
+			
+		stud=cooking()
+		stud.uid=x[0].uid
+		stud.name=x[0].name
+		stud.room_no=x[0].room_no
+		stud.date=request.POST['Date']
+		stud.tm=request.POST['Time']
+		stud.entry_created_by=x[0].uid
+		stud.last_modified_by=x[0].uid
+		
+		stud.save()
+	
+		
+	return render(request,'faculty/facultyhome.html')
+		 
 def getgatepass(request):
 	global global_studentid
 	global global_name
@@ -211,11 +300,13 @@ def getgatepass(request):
 		
 def complaint1(request):
 	global global_studentid
+	global global_block
 	#get data from form and fill in database
 	if request.method=='POST':
 		stud=complaints()
 		stud.uid=global_studentid
 		stud.block="BH2"
+		stud.room_no="518"
 		stud.entry_created_by=global_studentid
 		stud.last_modified_by=global_studentid
 		stud.complaint=request.POST['complaint']
@@ -236,7 +327,9 @@ def bh1(request):
 	l=gp.count()
 	gpm=medical_sevices.objects.all().filter(block__exact="BH1").filter(status=0)
 	lm=gpm.count()
-	context={"complaintss":gp,"lenght":l,"house":gph,"lenh":lh,"laundry":gpl,"lenl":ll,"medicalservice":gpm,"lenm":lm}
+	gpb=book_cab_details.objects.all().filter(block__exact="BH1").filter(status=0)
+	lb=gpb.count()
+	context={"complaintss":gp,"lenght":l,"house":gph,"lenh":lh,"laundry":gpl,"lenl":ll,"medicalservice":gpm,"lenm":lm,"bookcab":gpb,"lenb":lb}
 	return render(request,'manager/BH1.html',context)
 	
 def bh2(request):
@@ -248,12 +341,14 @@ def bh2(request):
 	l=gp.count()
 	gpm=medical_sevices.objects.all().filter(block__exact="BH2").filter(status=0)
 	lm=gpm.count()
-	context={"complaintss":gp,"lenght":l,"house":gph,"lenh":lh,"laundry":gpl,"lenl":ll,"medicalservice":gpm,"lenm":lm}
+	gpb=book_cab_details.objects.all().filter(block__exact="BH2").filter(status=0)
+	lb=gpb.count()
+	context={"complaintss":gp,"lenght":l,"house":gph,"lenh":lh,"laundry":gpl,"lenl":ll,"medicalservice":gpm,"lenm":lm,"bookcab":gpb,"lenb":lb}
 	return render(request,'manager/BH2.html',context)
 
 def gh1(request):
 	gpl=laundry_details.objects.all().filter(block__exact="GH1").filter(status=0)
-	print(gpl)
+	
 	ll=gpl.count()
 	gph=student_service_details.objects.all().filter(room_no__exact="GH1").filter(status=0)
 	lh=gph.count()
@@ -261,19 +356,27 @@ def gh1(request):
 	l=gp.count()
 	gpm=medical_sevices.objects.all().filter(block__exact="GH1").filter(status=0)
 	lm=gpm.count()
-	context={"complaintss":gp,"lenght":l,"house":gph,"lenh":lh,"laundry":gpl,"lenl":ll,"medicalservice":gpm,"lenm":lm}
+	gpb=book_cab_details.objects.all().filter(block__exact="GH1").filter(status=0)
+	lb=gpb.count()
+	context={"complaintss":gp,"lenght":l,"house":gph,"lenh":lh,"laundry":gpl,"lenl":ll,"medicalservice":gpm,"lenm":lm,"bookcab":gpb,"lenb":lb}
 	return render(request,'manager/GH1.html',context)
 	
 def fbuilding(request):
 	gpl=laundry_details.objects.all().filter(block__exact="FB").filter(status=0)
 	ll=gpl.count()
-	gph=student_service_details.objects.all().filter(room_no__exact="FB").filter(status=0)
+	gph=faculty_service_details.objects.all().filter(status=0)
 	lh=gph.count()
 	gp=complaints.objects.all().filter(block__exact="FB").filter(status=0)
 	l=gp.count()
 	gpm=medical_sevices.objects.all().filter(block__exact="FB").filter(status=0)
 	lm=gpm.count()
-	context={"complaintss":gp,"lenght":l,"house":gph,"lenh":lh,"laundry":gpl,"lenl":ll,"medicalservice":gpm,"lenm":lm}
+	gpb=book_cab_details.objects.all().filter(block__exact="FB").filter(status=0)
+	lb=gpb.count()
+	gpg=bring_groceries.objects.all().filter(status=0)
+	lg=gpg.count()
+	gpc=cooking.objects.all().filter(status=0)
+	lc=gpc.count()
+	context={"complaintss":gp,"lenght":l,"house":gph,"lenh":lh,"laundry":gpl,"lenl":ll,"medicalservice":gpm,"lenm":lm,"bookcab":gpb,"lenb":lb,"groceries":gpg,"lenG":lg,"cooking":gpc,"lenc":lc}
 	return render(request,'manager/facultybuilding.html',context)
 	
 def attendance(request):
@@ -332,14 +435,16 @@ def stuhouse(request):
 	
 def bookcab(request):
 	global global_studentid
+	global global_name
 	#get data from form and fill in database
 	if request.method=='POST':
 		stud=book_cab_details()
 		stud.uid=global_studentid
+		stud.name=global_name		
 		stud.entry_created_by=global_studentid
 		stud.last_modified_by=global_studentid
 		#stud.block=log.objects.all()[0].working_block
-		
+		stud.block="GH1"
 		stud.from_palce=request.POST['from_palce']
 		stud.to_palce=request.POST['to_palce']
 		stud.date=request.POST['date']
@@ -355,21 +460,50 @@ def bookcab(request):
 	print(gp)
 	context={"book_cab_detailss":gp}
 	return render(request,'student/sservices.html',context)
+def bookcab1(request):
+	global global_id
+	#get data from form and fill in database
+	if request.method=='POST':
+	
+		x = user_details.objects.all().filter(uid__exact=global_id)	
+		stud=book_cab_details()
+		stud.uid=x[0].uid
+		stud.name=x[0].name
+		stud.entry_created_by=x[0].uid
+		stud.last_modified_by=x[0].uid
+
+		stud.block="FB"
+		stud.from_palce=request.POST['from_palce']
+		stud.to_palce=request.POST['to_palce']
+		stud.date=request.POST['date']
+		
+		stud.tm=request.POST['time']
+		
+		stud.save()
+	
+	return render(request,'faculty/facultyhome.html')
+
 		
 def laundry(request):
 	global global_studentid
+
 	#get data from form and fill in database
 	if request.method=='POST':
 		
 		stud=laundry_details()
 		stud.uid=global_studentid
+		stud.name=global_name		
 		stud.room_no=request.POST['room_no']
 		stud.date=request.POST['date']
 		stud.block=request.POST['block']
 		stud.tm=request.POST['time']
 		stud.no_of_trousers=request.POST['trousers']
 		stud.no_of_shirts=request.POST['shirts']
+		stud.no_of_kurties=request.POST['kurties']
+		stud.no_of_salvars=request.POST['salvars']
+		stud.no_of_leggins=request.POST['leggins']
 		stud.other=request.POST['other']
+		stud.total=stud.no_of_trousers+stud.no_of_shirts+stud.no_of_kurties+stud.no_of_salvars+stud.no_of_leggins+stud.other
 		stud.entry_created_by=global_studentid
 		stud.last_modified_by=global_studentid
 		stud.save()
@@ -379,6 +513,58 @@ def laundry(request):
 	context={"laundry_detailss":gp}	
 	
 	return render(request,'student/sservices.html',context)
+
+def laundry1(request):
+	global global_id
+	
+	#get data from form and fill in database
+	if request.method=='POST':
+		
+		x = user_details.objects.all().filter(uid__exact=global_id)			
+		stud=laundry_details()
+		stud.uid=x[0].uid
+		stud.name=x[0].name
+		stud.room_no=request.POST['room_no']
+		stud.date=request.POST['date']
+		stud.block="FB"
+		stud.tm=request.POST['time']
+		stud.no_of_trousers=request.POST['trousers']
+		stud.no_of_shirts=request.POST['shirts']
+		stud.no_of_kurties=request.POST['kurties']
+		stud.no_of_salvars=request.POST['salvars']
+		stud.no_of_leggins=request.POST['leggins']
+		stud.other=request.POST['other']
+		stud.total=stud.no_of_trousers+stud.no_of_shirts+stud.no_of_kurties+stud.no_of_salvars+stud.no_of_leggins+stud.other
+		stud.entry_created_by=x[0].uid
+		stud.last_modified_by=x[0].uid
+		stud.save()
+	#get data from table and show in html page	
+		
+	
+	return render(request,'faculty/facultyhome.html')
+def groceries(request):
+	global global_id
+	#get data from form and fill in database
+	if request.method=='POST':
+		
+		x = user_details.objects.all().filter(uid__exact=global_id)			
+		stud=bring_groceries()
+		stud.uid=x[0].uid
+		stud.name=x[0].name
+		stud.room_no=x[0].room_no
+		stud.date=request.POST['date']
+		
+		stud.description=request.POST['items']
+		
+		stud.entry_created_by=x[0].uid
+		stud.last_modified_by=x[0].uid
+		stud.save()
+	#get data from table and show in html page	
+		
+	
+	return render(request,'faculty/facultyhome.html')
+
+
 def notifygates(request):
 	global global_studentid
 	#get data from form and fill in database
@@ -398,6 +584,26 @@ def notifygates(request):
 	
 	
 	return render(request,'student/sservices.html')
+def notifygates1(request):
+	global global_id
+	#get data from form and fill in database
+	if request.method=='POST':
+		
+		x = user_details.objects.all().filter(uid__exact=global_id)	
+		stud=notify_gate()
+		stud.uid=x[0].uid
+		stud.name_of_visitor=request.POST['name']
+		stud.date_of_arrival=request.POST['date']
+		stud.block="FB"
+		stud.mobile_no_of_visior=request.POST['mobno']
+		
+		stud.entry_created_by=x[0].uid
+		stud.last_modified_by=x[0].uid
+		stud.save()
+	#get data from table and show in html page	
+	
+	
+	return render(request,'faculty/facultyhome.html')
 	
 def addvisitor1(request):
 	global global_studentid
@@ -428,6 +634,7 @@ def medicalservice(request):
 		
 		stud=medical_sevices()
 		stud.uid=global_studentid
+		stud.name=global_name
 		stud.description=request.POST['description']
 		stud.room_no='201'
 		stud.block='BH1'
@@ -437,6 +644,25 @@ def medicalservice(request):
 	
 	return render(request,'student/sservices.html')
      
+
+def medicalservice1(request):
+	global global_id
+	#get data from form and fill in database
+	if request.method=='POST':
+				
+		x = user_details.objects.all().filter(uid__exact=global_id)	
+		
+		stud=medical_sevices()
+		stud.uid=x[0].uid
+		stud.name=x[0].name
+		stud.description=request.POST['description']
+		stud.room_no=x[0].room_no
+		stud.block=x[0].block
+		stud.entry_created_by=x[0].uid
+		stud.last_modified_by=x[0].uid
+		stud.save()
+	
+	return render(request,'faculty/facultyhome.html')
 	
 	
 def searchby_date(request):
