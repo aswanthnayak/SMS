@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <title>Student</title>
+  <title>Manager</title>
     <style>
   body
 {
@@ -162,7 +162,7 @@
                     <a href="#" class="btn btn-block" data-toggle="modal" data-target="#addcookModal">
                             <i class="fas fa-plus"></i> 
                           </a>
-                    <span class="num">{{lenm}}</span>
+                    <span class="num">{{lenc}}</span>
                       </div><br>Cooking
                   </div>
                   <div class="col-3">
@@ -171,7 +171,7 @@
                     <a href="#" class="btn btn-block" data-toggle="modal" data-target="#addcabModal">
                             <i class="fas fa-plus"></i> 
                           </a>
-                    <span class="num">2</span>
+                    <span class="num">{{lenb}}</span>
                    </div><br>Book Cab
                   </div>
                   <div class="col-3">
@@ -201,7 +201,7 @@
                     <a href="#" class="btn btn-block" data-toggle="modal" data-target="#addshoppingModal">
                             <i class="fas fa-plus"></i> 
                           </a>
-                    <span class="num">4</span>
+                    <span class="num">{{lenG}}</span>
                     </div><br>Bring Groceries
                   </div>
                   <div class="col-3">
@@ -210,7 +210,7 @@
                     <a href="#" class="btn btn-block" data-toggle="modal" data-target="#addambulanceModal">
                             <i class="fas fa-plus"></i> 
                           </a>
-                    <span class="num">0</span>
+                    <span class="num">{{lenm}}</span>
                         </div>     <br>Medical                   
                       </div>
                  <div class="col-3">
@@ -244,25 +244,31 @@
                                 <thead class="thead-dark">
                                 <tr>
                                 <th>#</th>
-                                <th>UserId</th>
+                                
                                 <th>Date</th>
                                 <th>Time</th>
+                                <th>UserId</th>
                                 <th>Worker Assigned</th>
                                 <th>status</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                               {% for i in house %}
+                           {% for i in house %}
 				<tr>
 				  <td>{{i.id}}</td>
-				  
-				  <td>{{i.uid}}</td>
 				  <td>{{i.date}} </td>
 				  <td>{{i.tm}} </td>
-				  <td><form><input type="text" for="assigned_worker_id" name="wid" ><input list="browsers" for="status" name="status" value="0"><datalist id="browsers">
-	<option value="1"></datalist><br><input type="submit" value="Submit" class="btn btn-primary btn-block" ></form> </td>
+				   {% endfor %}
+				  <form method="post" action="{% url 'hkstatus' %}">
+				  {% csrf_token %}
+				  <td><input type="text" name="uid" value="2016151" readonly></td>
+				  
+				   <td><input type="text" for="assigned_worker_id" name="wid" ></td><td><input type="number" for="status" name="status" value="0" min=0 max=1>
+				   <input type="submit" value="Submit" class="btn btn-primary btn-block" ></td> </form>
+
 				  </tr>
-			       {% endfor %} 
+				  			      
                                       
                                 </tbody>
                               </table>
@@ -302,36 +308,25 @@
                               <table class="table table-striped">
                                 <thead class="thead-dark">
                                   <tr>
-                                    <th>#</th>
-                                    <th>Floor</th>
-                                   <th>Room No</th>
-                                   <th>Name</th>
-                                    <th>Time</th>
-                                    </tr>
+                                <th>#</th>
+                                <th>UserId</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Worker Assigned</th>
+                                <th>status</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    
-                                    <td> 2nd</td>
-                                    <td>11</td>
-                                    <td>Keerthana</td>
-                                    <td>9:00 am</td>
-                                  </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>1st</td>
-                                    <td>20</td>
-                                    <td>Anand</td>
-                                    <td>9:30 am</td>
-                                  </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>1st</td>
-                                    <td>13</td>
-                                    <td>kiranmayi</td>
-                                    <td>10:00 am</td>
-                                    </tr>
+                                  {% for i in cooking %}
+				<tr>
+				  <td>{{i.id}}</td>
+				  
+				  <td>{{i.uid}}</td>
+				  <td>{{i.date}} </td>
+				  <td>{{i.tm}} </td>
+				  <form><td><input type="text" for="assigned_worker_id" name="wid" ></td><td><input type="number" for="status" name="status" value="Status-0" min=0 max=1><br><input type="submit" value="Submit" class="btn btn-primary btn-block" > </form>
+				  </tr>
+			       {% endfor %} 
                                   
                                 </tbody>
                               </table>
@@ -374,48 +369,27 @@
                                   <tr>
                                     <th>#</th>
                                     <th>User</th>
-                                    <th>Name</th>
+                                    
                                     <th>From</th>
                                     <th>To</th>
                                     <th>Date</th>
+                                    <th>Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>Faculty</td>
-                                    <td>Arjun</td>
-                                    <td>Academic building</td>
-                                    <td>tada</td>
-                                    <td>may 10 2018</td>
-                                    
-                                  </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>Faculty</td>
-                                    <td>sandeep</td>
-                                    <td>Boys Hostel 1</td>
-                                    <td>Sullurupeta</td>
-                                    <td>may 12 2018</td>
-                                     </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>Faculty</td>
-                                    <td>Ramaraj</td>
-                                    <td>Faculty Building</td>
-                                    <td>chennai</td>
-                                    <td>may 14 2018</td>
-                                    </tr>
-                                  <tr>
-                                    <td>4</td>
-                                    <td>Faculty</td>
-                                    <td>Aravind</td>
-                                    <td>Faculty Building</td>
-                                    <td>Sullurupeta</td>
-                                    <td>may 15 2018</td>
-                                    </tr>
-                                 
-                                </tbody>
+                            	{% for i in bookcab %}
+				<tr>
+				  <td>{{i.id}}</td>
+				  
+				  <td>{{i.uid}}</td>
+				  <td>{{i.from_palce}} </td>
+				  <td>{{i.to_palce}} </td>
+				  <td>{{i.date}} </td>
+				  <td>{{i.tm}} </td>
+				  
+				  </tr>
+			       {% endfor %}   
+                        </tbody>
                               </table>
                   
                               <!-- PAGINATION -->                        
@@ -432,88 +406,6 @@
       </div>
     
     
-<!--4 ADD DOOR MODAL -->
-<div class="modal fade" id="adddoorModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-              <h5 class="modal-title">NOTIFY GATE</h5>
-              <button class="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                 
-                  <section id="posts">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col">
-                            <div class="card">
-                              <div class="card-header">
-                                <h4>Latest cab services</h4>
-                              </div>
-                              <table class="table table-striped">
-                                <thead class="thead-dark">
-                                  <tr>
-                                    <th>#</th>
-                                    <th>User</th>
-                                    <th>Name of Visitor</th>
-                                    <th>Mobile number</th>
-                                    
-                                    <th>Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>Faculty</td>
-                                    <td>Arjun</td>
-                                    <td>9878766543</td>
-                                    
-                                    <td>September 10 2018</td>
-                                    
-                                  </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>Faculty</td>
-                                    <td>sandeep</td>
-                                    
-                                    <td>8976543234</td>
-                                    <td>may 12 2018</td>
-                                     </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>Faculty</td>
-                                    <td>Ramaraj</td>
-                                    
-                                    <td>9870987654</td>
-                                    <td>may 14 2018</td>
-                                    </tr>
-                                  <tr>
-                                    <td>4</td>
-                                    <td>Faculty</td>
-                                    <td>Aravind</td>
-                                    
-                                    <td>9090989089</td>
-                                    <td>may 15 2018</td>
-                                    </tr>
-                                 
-                                </tbody>
-                              </table>
-                  
-                              <!-- PAGINATION -->                        
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
-              </form>
-            </div>
-           
-          </div>
-        </div>
-      </div>
 
  <!--5 ADD CLOTHES MODAL -->
 <div class="modal fade" id="addclothesModal">
@@ -604,49 +496,25 @@
                                   <tr>
                                     <th>#</th>
                                     
-                                    <th>Floor</th>
+                                    <th>Name</th>
                                     <th>Room No</th>
                                     <th>Items</th>
                                     <th>Date</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    
-                                    <td> 2nd</td>
-                                    <td>201</td>
-                                    <td>1 Kg rice</td>
-                                    <td>June 20 2018</td>
-                                    
-                                  </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    
-                                    <td>1st</td>
-                                    <td>120</td>
-                                    <td>2 kg dal</td>
-                                    <td>June 12 2018</td>
-                                     </tr>
-                                  <tr>
-                                    <td>3</td>
-                                   
-                                    <td>1st</td>
-                                    <td>105</td>
-                                    <td>4 kg oil</td>
-                                    <td>June 14 2018</td>
-                                    </tr>
-                                  <tr>
-                                    <td>4</td>
-                                    
-                                    <td>2nd</td>
-                                    <td>219</td>
-                                    <td>2 milk Packets</td>
-                                    <td>June 15 2018</td>
-                                    </tr>
+                                   <tbody>
+				{% for i in groceries %}
+				<tr>
+				  <td>{{i.id}}</td>
+				  <td>{{i.uid}}</td>
+				  <td>{{i.room_no}} </td>
+				  <td>{{i.description}} </td>
+                              	  <td>{{i.date}} </td>
+                              <tr>
+				{% endfor %} 
                                   
                                 </tbody>
-                              </table>
+                                </table>
                   
                               <!-- PAGINATION -->                        
                             </div>
