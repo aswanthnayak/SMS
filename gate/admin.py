@@ -18,4 +18,3 @@ admin.site.register(complaints)
 admin.site.register(attendence_tracker)
 admin.site.register(worker_tracker)
 admin.site.register(student)
-
