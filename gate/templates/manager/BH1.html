@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <title>Student</title>
+  <title>Manager</title>
   <style>
   body
 {
@@ -166,6 +166,15 @@
                     <span class="num">{{lenm}}</span>
                   </div><br>Medical
                 </div>
+                 <div class="col-3">
+                      <div class="notifications">
+                    <i class="fa fa-car" style="font-size:36px" aria-hidden="true"></i>
+                    <a href="#" class="btn btn-block" data-toggle="modal" data-target="#addcabModal">
+                            <i class="fas fa-plus"></i> 
+                          </a>
+                    <span class="num">{{lenb}}</span>
+                   </div><br>Book Cab
+                  </div>
                 </div>
                 <br><br><br>
                    <div class="row">
@@ -336,81 +345,69 @@
     </div>
   </div>
  
-  <!--3 ADD CAB MODAL
-  <div class="modal fade" id="addcabModal">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header bg-primary text-white">
-            <h5 class="modal-title">CAB</h5>
-            <button class="close" data-dismiss="modal">
-              <span>&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-                <section id="posts">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col">
-                          <div class="card">
-                            <div class="card-header">
-                              <h4>Latest cab services</h4>
+ <!--3 ADD CAB MODAL -->
+    <div class="modal fade" id="addcabModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title">CAB</h5>
+              <button class="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                  <section id="posts">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col">
+                            <div class="card">
+                              <div class="card-header">
+                                <h4>Latest cab services</h4>
+                              </div>
+                              <table class="table table-striped">
+                                <thead class="thead-dark">
+                                  <tr>
+                                    <th>#</th>
+                                    <th>User</th>
+                                    
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            	{% for i in bookcab %}
+				<tr>
+				  <td>{{i.id}}</td>
+				  
+				  <td>{{i.uid}}</td>
+				  <td>{{i.from_palce}} </td>
+				  <td>{{i.to_palce}} </td>
+				  <td>{{i.date}} </td>
+				  <td>{{i.tm}} </td>
+				  
+				  </tr>
+			       {% endfor %}   
+                        </tbody>
+                              </table>
+                  
+                              <!-- PAGINATION -->                        
                             </div>
-                            <table class="table table-striped">
-                              <thead class="thead-dark">
-                                <tr>
-                                  <th>#</th>
-                                  <th>User</th>
-                                  <th>Name</th>
-                                  <th>From</th>
-                                  <th>To</th>
-                                  <th>Date</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Student</td>
-                                  <td>Arjun</td>
-                                  <td>Academic building</td>
-                                  <td>tada</td>
-                                  <td>may 10 2018</td>
-                                  
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>Student</td>
-                                  <td>sandeep</td>
-                                  <td>Boys Hostel 1</td>
-                                  <td>Sullurupeta</td>
-                                  <td>may 12 2018</td>
-                                   </tr>
-                                <tr>
-                                  <td>3</td>
-                                  <td>Student</td>
-                                  <td>Ramaraj</td>
-                                  <td>Faculty Building</td>
-                                  <td>chennai</td>
-                                  <td>may 14 2018</td>
-                                  </tr>
-                                
-                               
-                              </tbody>
-                            </table>
-                
-                            <!-- PAGINATION                       
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </section>
-            </form>
+                    </section>
+              </form>
+            </div>
+            
           </div>
-          
         </div>
       </div>
-    </div>-->  
-  
+    
+    
+
   
   <!--3 ADD CLOTHES MODAL -->
 <div class="modal fade" id="addclothesModal">
@@ -439,9 +436,14 @@
                             <th>Uid</th>
                             
                             <th>Room No</th>
-                            <th>No of Clothes</th>
+                            <th>shirts</th>
+<th>trousers</th>
+<th>urties</th>
+<th>salvars</th>
+<th>leggins</th>
+<th>others</th>
                             <th>Date</th>
-                            <th>time</th>
+                           
                             </tr>
                         </thead>
                             <tbody>
@@ -451,9 +453,14 @@
 				  
 				  <td>{{i.uid}}</td>
 				  <td>{{i.room_no}} </td>
-				  <td>{{i.no_of_shirts}}+{{i.no_of_trousers}}+{{i.other}} </td>
+				  <td>{{i.no_of_shirts}}</td>
+<td>{{i.no_of_trousers}}</td>
+<td>{{i.no_of_kurties}}</td>
+<td>{{i.no_of_salvars}}</td>
+<td>{{i.no_of_leggins}}</td>
+<td>{{i.other}} </td>
 				  <td>{{i.date}} </td>
-				  <td>{{i.tm}} </td>
+				  
 				  
 				  </tr>
 			       {% endfor %}   
