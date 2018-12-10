@@ -20,7 +20,6 @@ class user_details(models.Model):
 class log(models.Model):
 	uid = models.CharField(max_length=15,default=None)
 	name= models.CharField(max_length=30,default=None)
-	email_id = models.EmailField(max_length=30,default="abc@gmail.com")
 	block=models.CharField(max_length=5,default=None,null=True)
 	room_no  = models.CharField(max_length=5,default=None,null=True)
 	mobile_no=models.CharField(max_length=30,default=None)
